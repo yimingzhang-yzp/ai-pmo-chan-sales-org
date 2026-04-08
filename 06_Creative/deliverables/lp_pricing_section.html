@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>料金プラン — AI PMOちゃん</title>
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Maru Gothic ProN', 'Hiragino Maru Gothic Pro',
+                   'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+      background: #f8f5ff;
+      color: #2d2640;
+    }
+
+    /* ===== Section Wrapper ===== */
+    #pricing {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
+    }
+
+    /* ===== Section Header ===== */
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .pricing-eyebrow {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .pricing-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: #2d2640;
+    }
+
+    .pricing-title span {
+      background: linear-gradient(90deg, #ff85a1, #b57bee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pricing-subtitle {
+      font-size: clamp(14px, 2vw, 17px);
+      color: #6b5f7a;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== CTA Trial Banner (top) ===== */
+    .trial-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, #fff0f8 0%, #f0e8ff 100%);
+      border: 2px solid #f0b8d8;
+      border-radius: 20px;
+      padding: 20px 32px;
+      margin-bottom: 44px;
+      text-align: center;
+    }
+
+    .trial-banner-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: #2d2640;
+    }
+
+    .trial-banner-text .highlight {
+      color: #c946a0;
+    }
+
+    .trial-banner-note {
+      font-size: 13px;
+      color: #6b5f7a;
+    }
+
+    .btn-trial {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 16px rgba(181, 123, 238, 0.35);
+      white-space: nowrap;
+    }
+
+    .btn-trial:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(181, 123, 238, 0.45);
+    }
+
+    /* ===== Toggle ===== */
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .toggle-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #6b5f7a;
+      transition: color 0.2s;
+    }
+
+    .toggle-label.active {
+      color: #2d2640;
+    }
+
+    .toggle-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffd86e, #ffb347);
+      color: #4a3a00;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      width: 56px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      border-radius: 100px;
+      transition: background 0.25s;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    .toggle-switch input:checked ~ .toggle-thumb {
+      transform: translateX(26px);
+    }
+
+    /* ===== Plans Grid ===== */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    /* ===== Plan Card ===== */
+    .plan-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 28px 20px 32px;
+      border: 2px solid #ede8f6;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(100, 60, 180, 0.1);
+    }
+
+    /* Featured / Recommended Card */
+    .plan-card.featured {
+      border-color: #b57bee;
+      border-width: 3px;
+      background: linear-gradient(180deg, #fdf6ff 0%, #fff 100%);
+      transform: scale(1.03);
+      box-shadow: 0 16px 48px rgba(181, 123, 238, 0.25);
+      z-index: 1;
+    }
+
+    .plan-card.featured:hover {
+      transform: scale(1.03) translateY(-4px);
+      box-shadow: 0 24px 56px rgba(181, 123, 238, 0.32);
+    }
+
+    /* Recommended Badge */
+    .recommend-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .plan-card:not(.featured) .recommend-badge {
+      display: none;
+    }
+
+    /* Free Badge */
+    .free-badge {
+      display: none;
+    }
+
+    .plan-card.free-plan .free-badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #388e3c;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    /* Enterprise Badge */
+    .enterprise-badge {
+      display: none;
+    }
+
+    .plan-card.enterprise-plan .enterprise-badge {
+      display: inline-block;
+      background: #e8eaf6;
+      color: #3949ab;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .plan-name {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #2d2640;
+    }
+
+    .plan-target {
+      font-size: 12px;
+      color: #9e92b0;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    /* Price Area */
+    .plan-price-area {
+      min-height: 72px;
+      margin-bottom: 8px;
+    }
+
+    .plan-price {
+      font-size: 36px;
+      font-weight: 900;
+      color: #2d2640;
+      line-height: 1;
+    }
+
+    .plan-price .currency {
+      font-size: 18px;
+      font-weight: 700;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+
+    .plan-price .period {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9e92b0;
+      margin-left: 2px;
+    }
+
+    .plan-price-free {
+      font-size: 36px;
+      font-weight: 900;
+      color: #2d2640;
+      line-height: 1;
+    }
+
+    .plan-price-enterprise {
+      font-size: 22px;
+      font-weight: 900;
+      color: #2d2640;
+      line-height: 1.2;
+      padding-top: 8px;
+    }
+
+    .price-original {
+      font-size: 13px;
+      color: #b0a5c4;
+      text-decoration: line-through;
+      margin-bottom: 2px;
+      min-height: 18px;
+    }
+
+    .price-save-note {
+      font-size: 12px;
+      color: #c946a0;
+      font-weight: 700;
+      min-height: 16px;
+      margin-top: 4px;
+    }
+
+    /* CTA Button */
+    .plan-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px 16px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      margin-top: 20px;
+      margin-bottom: 24px;
+    }
+
+    .plan-cta.cta-primary {
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(181, 123, 238, 0.3);
+    }
+
+    .plan-cta.cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(181, 123, 238, 0.4);
+    }
+
+    .plan-cta.cta-secondary {
+      background: #f3eefd;
+      color: #7c4dce;
+    }
+
+    .plan-cta.cta-secondary:hover {
+      background: #e8dffa;
+      transform: translateY(-1px);
+    }
+
+    .plan-cta.cta-outline {
+      background: #fff;
+      color: #7c4dce;
+      border: 2px solid #d4c4f0;
+    }
+
+    .plan-cta.cta-outline:hover {
+      border-color: #b57bee;
+      transform: translateY(-1px);
+    }
+
+    /* Features List */
+    .plan-features {
+      list-style: none;
+      border-top: 1px solid #ede8f6;
+      padding-top: 20px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #4a3e5a;
+      line-height: 1.5;
+      padding: 5px 0;
+    }
+
+    .plan-features li .check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .plan-features li .check::after {
+      content: '';
+      width: 5px;
+      height: 9px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(40deg) translateY(-1px);
+      display: block;
+    }
+
+    .plan-features li .check.green {
+      background: linear-gradient(135deg, #66e09a, #00c77a);
+    }
+
+    /* Value Note */
+    .value-note {
+      margin-top: 40px;
+      background: linear-gradient(135deg, #fff8fc 0%, #f3f0ff 100%);
+      border: 1.5px solid #e8ddf8;
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+    }
+
+    .value-note p {
+      font-size: 14px;
+      color: #6b5f7a;
+      line-height: 1.8;
+    }
+
+    .value-note strong {
+      color: #c946a0;
+    }
+
+    /* ===== Bottom CTA ===== */
+    .bottom-cta {
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .bottom-cta p {
+      font-size: 18px;
+      font-weight: 800;
+      color: #2d2640;
+      margin-bottom: 20px;
+    }
+
+    .bottom-cta .btn-trial-lg {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff85a1, #b57bee);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 18px 48px;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 6px 24px rgba(181, 123, 238, 0.4);
+    }
+
+    .bottom-cta .btn-trial-lg:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(181, 123, 238, 0.5);
+    }
+
+    .bottom-cta .sub-note {
+      font-size: 13px;
+      color: #9e92b0;
+      margin-top: 12px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1100px) {
+      .plans-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .plans-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .plan-card.featured {
+        transform: none;
+        box-shadow: 0 8px 32px rgba(181, 123, 238, 0.2);
+      }
+
+      .plan-card.featured:hover {
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #pricing {
+        padding: 60px 16px 80px;
+      }
+
+      .trial-banner {
+        padding: 16px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section id="pricing">
+
+  <!-- Section Header -->
+  <div class="pricing-header">
+    <span class="pricing-eyebrow">💰 料金プラン</span>
+    <h2 class="pricing-title">
+      チーム全員で使えて、<span>この価格。</span>
+    </h2>
+    <p class="pricing-subtitle">
+      Slackで話しかけるだけで、PMO業務がぜんぶ片付く。<br>
+      ユーザー数が増えても料金は変わらない、スペース課金です。
+    </p>
+  </div>
+
+  <!-- Trial Banner (Top) -->
+  <div class="trial-banner">
+    <div>
+      <p class="trial-banner-text">🎉 <span class="highlight">14日間フル機能無料トライアル</span>実施中！</p>
+      <p class="trial-banner-note">クレジットカード不要 · いつでもキャンセル可 · 全プランの機能をお試しいただけます</p>
+    </div>
+    <a href="#" class="btn-trial">無料で試してみる →</a>
+  </div>
+
+  <!-- Toggle: 年払 / 月払 -->
+  <div class="toggle-wrapper">
+    <span class="toggle-label active" id="label-annual">
+      年払い
+      <span class="toggle-badge">2ヶ月分お得！</span>
+    </span>
+    <label class="toggle-switch" aria-label="月払いに切り替え">
+      <input type="checkbox" id="billing-toggle" />
+      <span class="toggle-track"></span>
+      <span class="toggle-thumb"></span>
+    </label>
+    <span class="toggle-label" id="label-monthly">月払い</span>
+  </div>
+
+  <!-- Plans Grid -->
+  <div class="plans-grid">
+
+    <!-- Starter Plan -->
+    <div class="plan-card">
+      <p class="plan-name">スタータープラン</p>
+      <p class="plan-target">〜15名のチーム向け</p>
+      <div class="plan-price-area">
+        <p class="price-original">&nbsp;</p>
+        <p class="plan-price" id="starter-price">
+          <span class="currency">¥</span><span id="starter-num">5,980</span>
+          <span class="period">/ 月</span>
+        </p>
+        <p class="price-save-note" id="starter-save">&nbsp;</p>
+      </div>
+      <a href="#" class="plan-cta cta-secondary">14日間無料で試す</a>
+      <ul class="plan-features">
+        <li><span class="check"></span>タスク追加/更新</li>
+        <li><span class="check"></span>プロジェクト進捗確認</li>
+      </ul>
+    </div>
+
+    <!-- Standard Plan (Featured) -->
+    <div class="plan-card featured">
+      <span class="recommend-badge">⭐ おすすめ</span>
+      <p class="plan-name">スタンダードプラン</p>
+      <p class="plan-target">〜50名のチーム向け</p>
+      <div class="plan-price-area">
+        <p class="price-original" id="standard-original">¥15,800 / 月</p>
+        <p class="plan-price" id="standard-price">
+          <span class="currency">¥</span><span id="standard-num">12,800</span>
+          <span class="period">/ 月</span>
+        </p>
+        <p class="price-save-note" id="standard-save">年払いで約¥36,000お得</p>
+      </div>
+      <a href="#" class="plan-cta cta-primary">14日間無料で試す →</a>
+      <ul class="plan-features">
+        <li><span class="check"></span>スターターの全機能</li>
+        <li><span class="check"></span>週次レポート自動生成</li>
+        <li><span class="check"></span>会議調整・リマインド</li>
+      </ul>
+    </div>
+
+    <!-- Premium Plan -->
+    <div class="plan-card">
+      <p class="plan-name">プレミアムプラン</p>
+      <p class="plan-target">〜150名のチーム向け</p>
+      <div class="plan-price-area">
+        <p class="price-original" id="premium-original">¥29,800 / 月</p>
+        <p class="plan-price" id="premium-price">
+          <span class="currency">¥</span><span id="premium-num">24,800</span>
+          <span class="period">/ 月</span>
+        </p>
+        <p class="price-save-note" id="premium-save">年払いで約¥60,000お得</p>
+      </div>
+      <a href="#" class="plan-cta cta-secondary">14日間無料で試す</a>
+      <ul class="plan-features">
+        <li><span class="check"></span>スタンダードの全機能</li>
+        <li><span class="check"></span>複数Slackワークスペース</li>
+        <li><span class="check"></span>カスタムレポート</li>
+        <li><span class="check"></span>優先サポート</li>
+      </ul>
+    </div>
+
+    <!-- Enterprise Plan -->
+    <div class="plan-card enterprise-plan">
+      <span class="enterprise-badge">大規模向け</span>
+      <p class="plan-name">エンタープライズ</p>
+      <p class="plan-target">150名〜の組織向け</p>
+      <div class="plan-price-area">
+        <p class="price-original">&nbsp;</p>
+        <p class="plan-price-enterprise">お見積もり<br>ご相談ください</p>
+        <p class="price-save-note">&nbsp;</p>
+      </div>
+      <a href="#" class="plan-cta cta-outline">お問い合わせ</a>
+      <ul class="plan-features">
+        <li><span class="check"></span>プレミアムの全機能</li>
+        <li><span class="check"></span>セキュリティ要件対応</li>
+        <li><span class="check"></span>専任カスタマーサクセス</li>
+        <li><span class="check"></span>SLA保証</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Value Note -->
+  <div class="value-note">
+    <p>
+      💡 AI PMOちゃんは<strong>ユーザー数に関わらず定額</strong>のスペース課金。<br>
+      Asana・ClickUp・Jiraのようにメンバーが増えるたびに費用が跳ね上がることはありません。<br>
+      50名のチームで使えば、<strong>競合ツールと比べて月数万円以上の削減</strong>になることも。
+    </p>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <p>🐱 まずは無料で体験してみにゃん！</p>
+    <a href="#" class="btn-trial-lg">14日間フル機能を無料で試す</a>
+    <p class="sub-note">クレジットカード不要 · セットアップは5分 · いつでもキャンセル可</p>
+  </div>
+
+</section>
+
+<!-- ===== Toggle JavaScript ===== -->
+<script>
+  (function () {
+    const toggle = document.getElementById('billing-toggle');
+    const labelAnnual = document.getElementById('label-annual');
+    const labelMonthly = document.getElementById('label-monthly');
+
+    // Price data: [annual, monthly]
+    const plans = [
+      {
+        numId: 'starter-num',
+        originalId: null,
+        saveId: 'starter-save',
+        annual: '5,980',
+        monthly: '5,980',
+        annualSave: '',
+        monthlySave: '',
+        monthlyOriginal: '',
+      },
+      {
+        numId: 'standard-num',
+        originalId: 'standard-original',
+        saveId: 'standard-save',
+        annual: '12,800',
+        monthly: '15,800',
+        annualSave: '年払いで約¥36,000お得',
+        monthlySave: '',
+        monthlyOriginal: '',
+      },
+      {
+        numId: 'premium-num',
+        originalId: 'premium-original',
+        saveId: 'premium-save',
+        annual: '24,800',
+        monthly: '29,800',
+        annualSave: '年払いで約¥60,000お得',
+        monthlySave: '',
+        monthlyOriginal: '',
+      },
+    ];
+
+    function update(isMonthly) {
+      // Labels
+      labelAnnual.classList.toggle('active', !isMonthly);
+      labelMonthly.classList.toggle('active', isMonthly);
+
+      plans.forEach(function (plan) {
+        const numEl = document.getElementById(plan.numId);
+        const origEl = plan.originalId ? document.getElementById(plan.originalId) : null;
+        const saveEl = document.getElementById(plan.saveId);
+
+        if (isMonthly) {
+          numEl.textContent = plan.monthly;
+          if (origEl) origEl.textContent = '\u00a0';
+          saveEl.textContent = plan.monthlySave || '\u00a0';
+        } else {
+          numEl.textContent = plan.annual;
+          if (origEl) origEl.textContent = '¥' + plan.monthly + ' / 月';
+          saveEl.textContent = plan.annualSave || '\u00a0';
+        }
+      });
+    }
+
+    toggle.addEventListener('change', function () {
+      update(toggle.checked);
+    });
+
+    // Initialize with annual pricing
+    update(false);
+  })();
+</script>
+
+</body>
+</html>

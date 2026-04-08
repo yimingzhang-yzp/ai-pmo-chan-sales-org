@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI PMOちゃん ロゴ — 商標登録用</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro',
+                   'M PLUS Rounded 1c','Noto Sans JP', sans-serif;
+      background: #f8f5ff;
+      color: #2d2640;
+    }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 60px 32px 100px; }
+
+    /* Page Header */
+    .page-header {
+      border-bottom: 2px solid #ede8f6;
+      padding-bottom: 24px;
+      margin-bottom: 56px;
+    }
+    .page-header h1 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #9e92b0;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      font-size: 28px;
+      font-weight: 900;
+      color: #2d2640;
+    }
+    .page-header .meta {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #9e92b0;
+    }
+
+    /* Section */
+    .logo-section {
+      margin-bottom: 64px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #b57bee;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #2d2640;
+      margin-bottom: 24px;
+    }
+
+    /* Logo display boxes */
+    .logo-box {
+      border-radius: 20px;
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .logo-box.bg-light   { background: #ffffff; border: 1.5px solid #ede8f6; }
+    .logo-box.bg-dark    { background: #2d2640; }
+    .logo-box.bg-grad    { background: linear-gradient(135deg, #ff85a1, #b57bee); }
+    .logo-box.bg-purple  { background: #7c4dce; }
+
+    .box-note {
+      font-size: 12px;
+      color: #9e92b0;
+      margin-bottom: 32px;
+      padding-left: 4px;
+    }
+
+    /* Grid for small variants */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .logo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    /* Color spec */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .color-swatch {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid #ede8f6;
+    }
+    .swatch-block {
+      height: 80px;
+    }
+    .swatch-info {
+      background: #fff;
+      padding: 12px 14px;
+    }
+    .swatch-name  { font-size: 13px; font-weight: 800; color: #2d2640; }
+    .swatch-hex   { font-size: 12px; color: #9e92b0; font-family: monospace; }
+
+    /* Clearspace diagram */
+    .clearspace-box {
+      background: #fff;
+      border: 1.5px solid #ede8f6;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    /* Usage notes */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .note-card {
+      background: #fff;
+      border: 1.5px solid #ede8f6;
+      border-radius: 16px;
+      padding: 20px 22px;
+    }
+    .note-card.do   { border-left: 4px solid #66e09a; }
+    .note-card.dont { border-left: 4px solid #ff85a1; }
+    .note-card h4 {
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .note-card.do   h4 { color: #2e7d5e; }
+    .note-card.dont h4 { color: #c9507a; }
+    .note-card ul { list-style: none; }
+    .note-card ul li {
+      font-size: 13px;
+      color: #4a3e5a;
+      padding: 4px 0;
+      line-height: 1.5;
+    }
+    .note-card ul li::before {
+      margin-right: 6px;
+    }
+    .note-card.do   ul li::before { content: '✓'; color: #2e7d5e; font-weight: 700; }
+    .note-card.dont ul li::before { content: '✕'; color: #c9507a; font-weight: 700; }
+
+    /* Trademark info table */
+    .tm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .tm-table th, .tm-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #ede8f6;
+    }
+    .tm-table th {
+      font-weight: 800;
+      color: #6b5f7a;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      background: #f8f5ff;
+      width: 30%;
+    }
+    .tm-table td { color: #2d2640; }
+
+    /* Monochrome SVG filter helpers */
+    .mono-dark  { filter: brightness(0); }
+    .mono-white { filter: brightness(0) invert(1); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Brand Identity / Trademark</h1>
+    <p>AI PMOちゃん — ロゴ 商標登録用データ</p>
+    <p class="meta">作成日: 2026-04-07　／　版: v1.0　／　担当: クリエイティブ制作</p>
+  </div>
+
+
+  <!-- =============================================
+       01. プライマリロゴ（横組み）
+       ============================================= -->
+  <div class="logo-section">
+    <p class="section-label">01</p>
+    <h2 class="section-title">プライマリロゴ（横組み）</h2>
+
+    <div class="logo-box bg-light">
+      <!-- Horizontal lockup SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160">
+        <defs>
+          <linearGradient id="g-main-h" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff85a1"/>
+            <stop offset="100%" stop-color="#b57bee"/>
+          </linearGradient>
+          <linearGradient id="g-text-h" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff85a1"/>
+            <stop offset="100%" stop-color="#b57bee"/>
+          </linearGradient>
+        </defs>
+        <!-- Icon background -->
+        <rect x="4" y="24" width="152" height="130" rx="34" fill="url(#g-main-h)"/>
+        <!-- Ears -->
+        <polygon points="20,52 44,6 68,52" fill="url(#g-main-h)"/>
+        <polygon points="27,50 44,18 61,50" fill="#ffb8d0" opacity="0.55"/>
+        <polygon points="92,52 116,6 140,52" fill="url(#g-main-h)"/>
+        <polygon points="99,50 116,18 133,50" fill="#ffb8d0" opacity="0.55"/>
+        <!-- Face -->
+        <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+        <!-- Left eye -->
+        <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+        <circle cx="62" cy="87" r="9" fill="#7c4dce"/>
+        <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+        <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+        <circle cx="59" cy="90" r="1.5" fill="#ffffff" opacity="0.7"/>
+        <!-- Right eye -->
+        <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+        <circle cx="98" cy="87" r="9" fill="#7c4dce"/>
+        <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+        <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+        <circle cx="95" cy="90" r="1.5" fill="#ffffff" opacity="0.7"/>
+        <!-- Nose -->
+        <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#ff85a1"/>
+        <!-- Mouth -->
+        <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#c95080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Cheeks -->
+        <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+        <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+        <!-- Whiskers left -->
+        <line x1="28" y1="99"  x2="62" y2="102" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="28" y1="105" x2="62" y2="105" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="28" y1="111" x2="63" y2="109" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Whiskers right -->
+        <line x1="132" y1="99"  x2="98" y2="102" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="132" y1="105" x2="98" y2="105" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="132" y1="111" x2="97" y2="109" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Sparkles -->
+        <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#ffd86e"/>
+        <path d="M14,28 L15.5,24 L17,28 L21,29.5 L17,31 L15.5,35 L14,31 L10,29.5Z" fill="#ffffff" opacity="0.75"/>
+        <!-- Wordmark -->
+        <text x="184" y="82" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="46" font-weight="900" letter-spacing="-0.5" fill="url(#g-text-h)">AI PMOちゃん</text>
+        <line x1="184" y1="96" x2="474" y2="96" stroke="#ede8f6" stroke-width="1.5"/>
+        <text x="186" y="118" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#9e92b0">AI PMO ASSISTANT</text>
+        <text x="186" y="142" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#b0a5c4">話しかけるだけで、PMO業務が片付く。</text>
+      </svg>
+    </div>
+    <p class="box-note">白背景 / フルカラー版（基本使用）</p>
+
+    <!-- Dark background -->
+    <div class="logo-box bg-dark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="420" height="140">
+        <defs>
+          <linearGradient id="g-main-dk" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff85a1"/>
+            <stop offset="100%" stop-color="#b57bee"/>
+          </linearGradient>
+          <linearGradient id="g-text-dk" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff85a1"/>
+            <stop offset="100%" stop-color="#b57bee"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="24" width="152" height="130" rx="34" fill="url(#g-main-dk)"/>
+        <polygon points="20,52 44,6 68,52" fill="url(#g-main-dk)"/>
+        <polygon points="27,50 44,18 61,50" fill="#ffb8d0" opacity="0.55"/>
+        <polygon points="92,52 116,6 140,52" fill="url(#g-main-dk)"/>
+        <polygon points="99,50 116,18 133,50" fill="#ffb8d0" opacity="0.55"/>
+        <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+        <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+        <circle cx="62" cy="87" r="9" fill="#7c4dce"/>
+        <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+        <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+        <circle cx="59" cy="90" r="1.5" fill="#ffffff" opacity="0.7"/>
+        <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+        <circle cx="98" cy="87" r="9" fill="#7c4dce"/>
+        <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+        <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+        <circle cx="95" cy="90" r="1.5" fill="#ffffff" opacity="0.7"/>
+        <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#ff85a1"/>
+        <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#c95080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+        <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+        <line x1="28" y1="99"  x2="62" y2="102" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="28" y1="105" x2="62" y2="105" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="28" y1="111" x2="63" y2="109" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="132" y1="99"  x2="98" y2="102" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="132" y1="105" x2="98" y2="105" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="132" y1="111" x2="97" y2="109" stroke="#c4b8d8" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#ffd86e"/>
+        <path d="M14,28 L15.5,24 L17,28 L21,29.5 L17,31 L15.5,35 L14,31 L10,29.5Z" fill="#ffffff" opacity="0.75"/>
+        <text x="184" y="82" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="46" font-weight="900" letter-spacing="-0.5" fill="url(#g-text-dk)">AI PMOちゃん</text>
+        <line x1="184" y1="96" x2="474" y2="96" stroke="#ffffff" stroke-width="1" opacity="0.2"/>
+        <text x="186" y="118" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#b0a5c4">AI PMO ASSISTANT</text>
+        <text x="186" y="142" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#7c6e9a">話しかけるだけで、PMO業務が片付く。</text>
+      </svg>
+    </div>
+    <p class="box-note">ダーク背景版</p>
+  </div>
+
+
+  <!-- =============================================
+       02. アイコンマーク単体
+       ============================================= -->
+  <div class="logo-section">
+    <p class="section-label">02</p>
+    <h2 class="section-title">アイコンマーク単体</h2>
+    <div class="logo-grid">
+
+      <!-- Icon on white -->
+      <div>
+        <div class="logo-box bg-light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="120" height="120">
+            <defs>
+              <linearGradient id="g-ic1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff85a1"/>
+                <stop offset="100%" stop-color="#b57bee"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="24" width="152" height="130" rx="34" fill="url(#g-ic1)"/>
+            <polygon points="20,52 44,6 68,52" fill="url(#g-ic1)"/>
+            <polygon points="27,50 44,18 61,50" fill="#ffb8d0" opacity="0.55"/>
+            <polygon points="92,52 116,6 140,52" fill="url(#g-ic1)"/>
+            <polygon points="99,50 116,18 133,50" fill="#ffb8d0" opacity="0.55"/>
+            <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+            <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="62" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+            <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="98" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+            <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#ff85a1"/>
+            <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#c95080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#ffd86e"/>
+          </svg>
+        </div>
+        <p class="box-note">白背景</p>
+      </div>
+
+      <!-- Icon on dark -->
+      <div>
+        <div class="logo-box bg-dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="120" height="120">
+            <defs>
+              <linearGradient id="g-ic2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff85a1"/>
+                <stop offset="100%" stop-color="#b57bee"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="24" width="152" height="130" rx="34" fill="url(#g-ic2)"/>
+            <polygon points="20,52 44,6 68,52" fill="url(#g-ic2)"/>
+            <polygon points="27,50 44,18 61,50" fill="#ffb8d0" opacity="0.55"/>
+            <polygon points="92,52 116,6 140,52" fill="url(#g-ic2)"/>
+            <polygon points="99,50 116,18 133,50" fill="#ffb8d0" opacity="0.55"/>
+            <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+            <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="62" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+            <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="98" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+            <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#ff85a1"/>
+            <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#c95080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#ffd86e"/>
+          </svg>
+        </div>
+        <p class="box-note">ダーク背景</p>
+      </div>
+
+      <!-- Icon on gradient -->
+      <div>
+        <div class="logo-box bg-grad">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="120" height="120">
+            <rect x="4" y="24" width="152" height="130" rx="34" fill="#ffffff" opacity="0.25"/>
+            <polygon points="20,52 44,6 68,52" fill="#ffffff" opacity="0.25"/>
+            <polygon points="27,50 44,18 61,50" fill="#ffffff" opacity="0.3"/>
+            <polygon points="92,52 116,6 140,52" fill="#ffffff" opacity="0.25"/>
+            <polygon points="99,50 116,18 133,50" fill="#ffffff" opacity="0.3"/>
+            <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+            <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="62" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+            <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="98" cy="87" r="9" fill="#7c4dce"/>
+            <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+            <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#ff85a1"/>
+            <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#c95080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#ff85a1" opacity="0.22"/>
+            <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#ffd86e"/>
+          </svg>
+        </div>
+        <p class="box-note">グラデーション背景</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       03. モノクロ版（商標登録提出用）
+       ============================================= -->
+  <div class="logo-section">
+    <p class="section-label">03</p>
+    <h2 class="section-title">モノクロ版（商標登録提出用）</h2>
+    <div class="logo-grid-2">
+
+      <!-- Mono black on white -->
+      <div>
+        <div class="logo-box bg-light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="380" height="126">
+            <!-- Icon mono black -->
+            <rect x="4" y="24" width="152" height="130" rx="34" fill="#2d2640"/>
+            <polygon points="20,52 44,6 68,52" fill="#2d2640"/>
+            <polygon points="27,50 44,18 61,50" fill="#ffffff" opacity="0.2"/>
+            <polygon points="92,52 116,6 140,52" fill="#2d2640"/>
+            <polygon points="99,50 116,18 133,50" fill="#ffffff" opacity="0.2"/>
+            <circle cx="80" cy="96" r="52" fill="#ffffff"/>
+            <circle cx="62" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="62" cy="87" r="9" fill="#555"/>
+            <circle cx="62" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="66" cy="83" r="3" fill="#ffffff"/>
+            <circle cx="98" cy="86" r="12" fill="#ffffff"/>
+            <circle cx="98" cy="87" r="9" fill="#555"/>
+            <circle cx="98" cy="88" r="6" fill="#2d2640"/>
+            <circle cx="102" cy="83" r="3" fill="#ffffff"/>
+            <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#888"/>
+            <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#555" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="51"  cy="103" rx="10" ry="6.5" fill="#aaa" opacity="0.3"/>
+            <ellipse cx="109" cy="103" rx="10" ry="6.5" fill="#aaa" opacity="0.3"/>
+            <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#888"/>
+            <!-- Wordmark mono -->
+            <text x="184" y="82" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="46" font-weight="900" letter-spacing="-0.5" fill="#2d2640">AI PMOちゃん</text>
+            <line x1="184" y1="96" x2="474" y2="96" stroke="#ccc" stroke-width="1.5"/>
+            <text x="186" y="118" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#888">AI PMO ASSISTANT</text>
+            <text x="186" y="142" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#aaa">話しかけるだけで、PMO業務が片付く。</text>
+          </svg>
+        </div>
+        <p class="box-note">モノクロ — 黒（商標出願書類用）</p>
+      </div>
+
+      <!-- Mono white on black -->
+      <div>
+        <div class="logo-box bg-dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="380" height="126">
+            <rect x="4" y="24" width="152" height="130" rx="34" fill="#ffffff"/>
+            <polygon points="20,52 44,6 68,52" fill="#ffffff"/>
+            <polygon points="27,50 44,18 61,50" fill="#2d2640" opacity="0.15"/>
+            <polygon points="92,52 116,6 140,52" fill="#ffffff"/>
+            <polygon points="99,50 116,18 133,50" fill="#2d2640" opacity="0.15"/>
+            <circle cx="80" cy="96" r="52" fill="#2d2640"/>
+            <circle cx="62" cy="86" r="12" fill="#2d2640"/>
+            <circle cx="62" cy="87" r="9" fill="#888"/>
+            <circle cx="62" cy="88" r="6" fill="#ffffff"/>
+            <circle cx="66" cy="83" r="3" fill="#2d2640"/>
+            <circle cx="98" cy="86" r="12" fill="#2d2640"/>
+            <circle cx="98" cy="87" r="9" fill="#888"/>
+            <circle cx="98" cy="88" r="6" fill="#ffffff"/>
+            <circle cx="102" cy="83" r="3" fill="#2d2640"/>
+            <path d="M77,101 L80,96 L83,101 Q80,105 77,101Z" fill="#bbb"/>
+            <path d="M73,108 Q77,114 80,111 Q83,114 87,108" stroke="#ccc" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M140,18 L142.5,12 L145,18 L151,20.5 L145,23 L142.5,29 L140,23 L134,20.5Z" fill="#bbb"/>
+            <text x="184" y="82" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="46" font-weight="900" letter-spacing="-0.5" fill="#ffffff">AI PMOちゃん</text>
+            <line x1="184" y1="96" x2="474" y2="96" stroke="#ffffff" stroke-width="1" opacity="0.2"/>
+            <text x="186" y="118" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#888">AI PMO ASSISTANT</text>
+            <text x="186" y="142" font-family="'Hiragino Maru Gothic ProN','Hiragino Maru Gothic Pro','M PLUS Rounded 1c','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#666">話しかけるだけで、PMO業務が片付く。</text>
+          </svg>
+        </div>
+        <p class="box-note">モノクロ — 白抜き（黒背景）</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       04. ブランドカラー仕様
+       ============================================= -->
+  <div class="logo-section">
+    <p class="section-label">04</p>
+    <h2 class="section-title">ブランドカラー仕様</h2>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:linear-gradient(135deg,#ff85a1,#b57bee);"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">プライマリグラデーション</p>
+          <p class="swatch-hex">#FF85A1 → #B57BEE</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ff85a1;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ピンク</p>
+          <p class="swatch-hex">#FF85A1</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#b57bee;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">パープル</p>
+          <p class="swatch-hex">#B57BEE</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ffd86e;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ゴールド（アクセント）</p>
+          <p class="swatch-hex">#FFD86E</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#7c4dce;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ディープパープル（瞳）</p>
+          <p class="swatch-hex">#7C4DCE</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#2d2640;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ダーク（テキスト）</p>
+          <p class="swatch-hex">#2D2640</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ffffff; border-bottom:1px solid #ede8f6;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ホワイト（顔・背景）</p>
+          <p class="swatch-hex">#FFFFFF</p>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#f8f5ff;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">ライトパープル（背景）</p>
+          <p class="swatch-hex">#F8F5FF</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       05. 商標登録情報・使用ガイドライン
+       ============================================= -->
+  <div class="logo-section">
+    <p class="section-label">05</p>
+    <h2 class="section-title">商標登録情報</h2>
+
+    <table class="tm-table" style="margin-bottom:32px;">
+      <tr><th>商標名称（標準文字）</th><td>AI PMOちゃん</td></tr>
+      <tr><th>区分（ニース分類）</th><td>第42類（ソフトウェアのSaaS提供、AIによる情報処理）、第35類（ビジネス管理補助）</td></tr>
+      <tr><th>図形商標</th><td>猫耳キャラクター＋ワードマーク（結合商標として出願推奨）</td></tr>
+      <tr><th>色彩</th><td>ピンク（#FF85A1）・パープル（#B57BEE）グラデーションを基調色とする図形商標を含む</td></tr>
+      <tr><th>出願形式</th><td>カラー版・モノクロ版を両方提出（特許庁 J-PlatPat 基準）</td></tr>
+      <tr><th>ファイル形式</th><td>SVG（ベクター）／PNG 1000px以上 ／ PDF（提出時）</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:800;margin-bottom:16px;color:#2d2640;">使用ガイドライン</h3>
+    <div class="notes-grid">
+      <div class="note-card do">
+        <h4>DO ✓ 推奨</h4>
+        <ul>
+          <li>白・黒・グラデーション背景での使用</li>
+          <li>SVG/PNG の原寸・比率維持での使用</li>
+          <li>ロゴ周囲にアイコン幅の 1/4 以上の余白確保</li>
+          <li>モノクロ版は単色（黒 or 白）のみで使用</li>
+          <li>最小サイズ: アイコン単体 24px / 横組み 160px 以上</li>
+        </ul>
+      </div>
+      <div class="note-card dont">
+        <h4>DON'T ✕ 禁止</h4>
+        <ul>
+          <li>縦横比を変えたビューの使用</li>
+          <li>承認外カラーへの変更</li>
+          <li>ロゴへのエフェクト・影・縁取り追加</li>
+          <li>ロゴ上へのテキスト・画像の重ね合わせ</li>
+          <li>ロゴの一部のみ（文字だけ / アイコンだけ）を改変して使用</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
